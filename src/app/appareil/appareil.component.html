@@ -1,0 +1,13 @@
+<div [class.bg-red-200]="!appareilStatus" [class.bg-teal-200]="appareilStatus" class="justify-content-center p-3">
+  <div class="flex flex-row p-2 align-items-center gap-3">
+    <img [src]="appareilImage" [alt]="appareilName" class="w-6rem shadow-2 flex-shrink-0 border-round" />
+    <div class="flex-1 flex flex-column gap-2">
+      <p>{{appareilName}} // {{ appareilStatus  }}</p>
+      <div class="flex align-items-center gap-2">
+        <input pInputText type="text" class="p-inputtext-sm" placeholder="Small" [(ngModel)]="appareilName" />
+        <p-inputSwitch [(ngModel)]="appareilStatus" ></p-inputSwitch>
+      </div>
+    </div>
+    <button pButton pRipple label="Switch" class="p-button-success"></button>
+  </div>
+</div>
