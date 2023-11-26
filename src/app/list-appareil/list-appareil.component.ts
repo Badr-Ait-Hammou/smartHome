@@ -1,57 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { AppareilsService } from '../appareils.service';
 
 @Component({
   selector: 'app-list-appareil',
   templateUrl: './list-appareil.component.html',
-  styleUrls: ['./list-appareil.component.css']
+  styleUrls: ['./list-appareil.component.css'],
+  providers: [AppareilsService],
+
 })
 export class ListAppareilComponent implements OnInit {
   isOk:boolean=true;
-  appareils=[
-    {
-      name:"Lamp",
-      image:"assets/images/lamp.jpg",
-      status:true
-    }, {
-      name:"Floor robot ",
-      image:"assets/images/floor robor.jpg",
-      status:false
-    }, {
-      name:"Refrigerator",
-      image:"assets/images/refrigerator.jpg",
-      status:true
-    },{
-      name:"Tv",
-      image:"assets/images/modern-indoor-living-room.jpg",
-      status:true
-    },{
-      name:"Washing Machine",
-      image:"assets/images/washing-machine.jpg",
-      status:true
-    },
-  ]
-  constructor() {
+
+  constructor(private appareilsService: AppareilsService) {
     setTimeout(()=>{
       this.isOk=false;
     },5000);
   }
 
+  get appareils() {
+    return this.appareilsService.appareils;
+  }
+
   areAllDevicesOn(): boolean {
-    return this.appareils.every(device => device.status);
+    return this.appareilsService.areAllDevicesOn();
   }
 
   areAllDevicesOff(): boolean {
-    return this.appareils.every(device => !device.status);
+    return this.appareilsService.areAllDevicesOff();
   }
 
-  switchAllOn() {
-    console.log("Turning all devices on");
-    this.appareils = this.appareils.map(device => ({ ...device, status: true }));
+  switchAllOn(): void {
+    this.appareilsService.switchAllOn();
   }
-  switchAllOff() {
-    console.log("Turning all devices off");
-    this.appareils = this.appareils.map(device => ({ ...device, status: false }));
+
+  switchAllOff(): void {
+    this.appareilsService.switchAllOff();
   }
+
+
+
   ngOnInit(): void {
   }
 
