@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TagModule} from "primeng/tag";
 import {DividerModule} from "primeng/divider";
+import {CardModule} from "primeng/card";
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import {DividerModule} from "primeng/divider";
     InputSwitchModule,
     ImageModule,
     TagModule,
-    DividerModule
+    DividerModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

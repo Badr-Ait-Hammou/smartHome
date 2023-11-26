@@ -1,21 +1,21 @@
 
-<div  class="justify-content-center p-0.5">
-  <div [class.bg-red-200]="!appareilStatus" [class.bg-teal-200]="appareilStatus" class="border-1 border-round flex flex-row p-2  align-items-center gap-3">
-    <p-image [src]="appareilImage" [preview]="true" [alt]="appareilName" width="150" height="150">
-      <ng-template pTemplate="indicator">
-        <i class="pi pi-eye"></i>
-      </ng-template>
-    </p-image>
+<div  class="card justify-content-center p-2 m-2   ">
+  <div [class.bg-red-200]="!appareilStatus" [class.bg-teal-200]="appareilStatus" class=" shadow-2 p-3 h-full flex flex-column  border-1 border-round   align-items-center  ">
+    <img [src]="appareilImage"  [alt]="appareilName"  class=" object-cover h-48 w-96 "/>
+<!--      <ng-template pTemplate="indicator">-->
+<!--        <i class="pi pi-eye"></i>-->
+<!--      </ng-template>-->
 
 
 
-    <div class="flex-1 flex flex-column gap-2">
-      <p-tag [severity]="appareilStatus == true ? 'success' : 'danger'" class="tag-position">This {{appareilName}} is {{ appareilStatus ? 'on' :'off' }}</p-tag>
-      <div class="flex align-items-center gap-2">
+    <div class=" flex flex-wrap justify-between gap-5 text-center">
+      <p-tag [severity]="appareilStatus == true ? 'success' : 'danger'" class="mt-2">This {{appareilName}} is {{ appareilStatus ? 'on' :'off' }}</p-tag>
+      <p-inputSwitch [(ngModel)]="appareilStatus" class="mt-2" ></p-inputSwitch>
+    </div>
+      <div class="flex align-items-center gap-2 mt-1">
         <input pInputText type="text" class="p-inputtext-sm" placeholder="Small" [(ngModel)]="appareilName" />
       </div>
-    </div>
-    <p-inputSwitch [(ngModel)]="appareilStatus" ></p-inputSwitch>
+
   </div>
 </div>
 

@@ -1,6 +1,11 @@
 
-<app-appareil *ngFor="let appareil of appareils" [appareilImage]="appareil.image"  [appareilName]="appareil.name"   [appareilStatus]=appareil.status   ></app-appareil>
-<div class="card flex-1 p-2  justify-content-between text-center bg-teal-400  ">
+<div class="container grid-cols-12">
+  <div class="grid grid-cols-3 gap-3">
+  <app-appareil *ngFor="let appareil of appareils" [appareilImage]="appareil.image"  [appareilName]="appareil.name"   [appareilStatus]=appareil.status   ></app-appareil>
+
+</div>
+</div>
+<div class=" flex-1 p-2  justify-content-between text-center bg-teal-400  ">
 <button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-success mx-0.5  p-1 text-sm"></button>
   <button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger mx-0.5 p-1 text-sm"></button>
   </div>
