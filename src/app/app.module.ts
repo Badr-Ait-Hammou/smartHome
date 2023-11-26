@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppareilComponent } from './appareil/appareil.component';
@@ -9,7 +8,9 @@ import { ButtonModule } from 'primeng/button';
 import {AvatarModule} from "primeng/avatar";
 import { InputTextModule } from 'primeng/inputtext';
 import {InputSwitchModule} from "primeng/inputswitch";
-
+import { ImageModule } from 'primeng/image';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,10 +20,12 @@ import {InputSwitchModule} from "primeng/inputswitch";
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     ButtonModule,
     AvatarModule,
     InputTextModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

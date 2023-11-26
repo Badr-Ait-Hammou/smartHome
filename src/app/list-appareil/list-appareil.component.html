@@ -1,5 +1,6 @@
 
-<app-appareil *ngFor="let appareil of appareils" [appareilName]="appareil.name" [appareilStatus]=appareil.status ></app-appareil>
-<div class="card xl:flex xl:justify-content-center">
-<button pButton  label="Switch all on" (click)="switchAllOn()" class="p-button-info"></button>
+<app-appareil *ngFor="let appareil of appareils" [appareilImage]="appareil.image"  [appareilName]="appareil.name"   [appareilStatus]=appareil.status   ></app-appareil>
+<div class="card flex-1 p-2  justify-content-between text-center">
+<button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-info m-1"></button>
+<button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger m-1"></button>
   </div>

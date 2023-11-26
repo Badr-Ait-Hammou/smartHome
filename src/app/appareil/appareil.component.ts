@@ -9,7 +9,7 @@ export class AppareilComponent implements OnInit {
 
   @Input() appareilName:string = "tel";
   @Input() appareilStatus: boolean = true;
-  appareilImage:string="assets/images/table.png";
+  @Input() appareilImage:string="assets/images/table.png";
   constructor() { }
 
   ngOnInit(): void {
