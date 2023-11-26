@@ -11,6 +11,7 @@ import {InputSwitchModule} from "primeng/inputswitch";
 import { ImageModule } from 'primeng/image';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TagModule} from "primeng/tag";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AvatarModule,
     InputTextModule,
     InputSwitchModule,
-    ImageModule
+    ImageModule,
+    TagModule
   ],
   providers: [],
   bootstrap: [AppComponent]
