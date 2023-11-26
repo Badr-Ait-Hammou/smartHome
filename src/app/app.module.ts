@@ -12,6 +12,7 @@ import { ImageModule } from 'primeng/image';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TagModule} from "primeng/tag";
+import {DividerModule} from "primeng/divider";
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {TagModule} from "primeng/tag";
     InputTextModule,
     InputSwitchModule,
     ImageModule,
-    TagModule
+    TagModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

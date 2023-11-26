@@ -13,7 +13,7 @@ export class ListAppareilComponent implements OnInit {
       image:"assets/images/lamp.jpg",
       status:true
     }, {
-      name:"Robot ",
+      name:"Floor robot ",
       image:"assets/images/floor robor.jpg",
       status:false
     }, {
