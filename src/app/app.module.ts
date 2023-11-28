@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TagModule} from "primeng/tag";
 import {DividerModule} from "primeng/divider";
 import {CardModule} from "primeng/card";
+import {HttpClientModule} from "@angular/common/http";
+import {DialogModule} from "primeng/dialog";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import {CardModule} from "primeng/card";
     ImageModule,
     TagModule,
     DividerModule,
-    CardModule
+    CardModule,
+    HttpClientModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,48 @@
 
-<div class="container grid-cols-12">
+<div class="card  m-3 p-2">
   <div class="grid grid-cols-3 gap-3">
-  <app-appareil *ngFor="let appareil of appareils" [appareilImage]="appareil.image"  [appareilName]="appareil.name"   [appareilStatus]=appareil.status   ></app-appareil>
+    <div *ngFor="let appareil of appareils" class=" shadow-2 p-3 h-full flex flex-column  border-1 border-round   align-items-center  ">
+         <img [src]="appareil.photo" alt="{{ appareil.label }}" class=" object-cover h-48 w-96"/>
 
+      <div class=" flex flex-wrap justify-between gap-5 text-center">
+        <p-tag severity="success"  class="mt-2">name : {{appareil.label}} </p-tag>
+        <p-tag severity="success"  class="mt-2">status : {{appareil.state}} </p-tag>
+        <!--      <p-inputSwitch [(ngModel)]="appareilStatus" class="mt-2" ></p-inputSwitch>-->
+      </div>
+      <div class="flex align-items-center gap-2 mt-1">
+        <p-tag severity="success"  class="mt-2">desc : {{appareil.description}} </p-tag>
+        <button pButton  label="Switch "  class="p-button-danger mx-0.5 p-1 text-sm"></button>
+
+      </div>
+    </div>
 </div>
 </div>
-<div class=" flex-1 p-2  justify-content-between text-center bg-teal-400  ">
-<button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-success mx-0.5  p-1 text-sm"></button>
-  <button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger mx-0.5 p-1 text-sm"></button>
+<!--<div class=" flex-1 p-2  justify-content-between text-center bg-teal-400  ">-->
+<!--&lt;!&ndash;<button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-success mx-0.5  p-1 text-sm"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger mx-0.5 p-1 text-sm"></button>&ndash;&gt;-->
+<!--  </div>-->
+
+<div class="flex-1 p-2 justify-content-between text-center bg-teal-400">
+  <button pButton label="Save Appareil" class="p-button-success mx-0.5 p-1 text-sm" (click)="openSaveDialog()"></button>
+</div>
+
+<p-dialog header="Save Appareil" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="label">Label</label>
+      <input id="label" pInputText [(ngModel)]="newAppareil.label" />
+    </div>
+    <div class="p-field">
+      <label for="stats">State</label>
+      <p-inputSwitch [(ngModel)]="newAppareil.state"></p-inputSwitch>
+    </div>
+    <div class="p-field">
+      <label for="photo">Photo</label>
+      <input id="photo" type="file" (change)="onFileChange($event)" />
+    </div>  </div>
+
+  <div class="p-dialog-footer">
+    <button pButton label="Save" class="p-button-success" (click)="saveAppareil()"></button>
+    <button pButton label="Cancel" class="p-button-secondary" (click)="displaySaveDialog = false"></button>
   </div>
+</p-dialog>
