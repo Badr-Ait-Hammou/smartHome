@@ -25,4 +25,8 @@ export class CategorieService {
   deleteCategorie(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/id/${id}`);
   }
+  updateCategorie(id: number, updatedCategorie: { label: string }): Observable<Categorie> {
+    return this.http.put<Categorie>(`${this.apiUrl}/id/${id}`, updatedCategorie);
+  }
+
 }

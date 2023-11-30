@@ -10,11 +10,14 @@ import {CategorieService} from "../service/categorie.service";
 export class CategoriesComponent implements OnInit {
   categories: Categorie[] = [];
   displaySaveDialog = false;
+  displayUpdateDialog = false;
 
   newCategorie: Categorie = {
     id: 0,
     label: '',
   };
+  selectedCategorie: Categorie = { id: 0, label: '' };
+
 
   constructor(private categorieService: CategorieService) {}
 
@@ -39,6 +42,14 @@ export class CategoriesComponent implements OnInit {
   openSaveDialog(): void {
     this.displaySaveDialog = true;
   }
+
+  openUpdateDialog(categorie: Categorie): void {
+    // Set the selected category for update
+    this.selectedCategorie = { ...categorie };
+    // Open the update dialog
+    this.displayUpdateDialog = true;
+  }
+
 
   /************************ Save cat ***********************/
 
@@ -69,4 +80,34 @@ export class CategoriesComponent implements OnInit {
       }
     );
   }
+
+  // updateCategorie(categorie: Categorie): void {
+  //   const updatedCategorie: { id: number; label: string } = {
+  //     id: categorie.id,
+  //     label: categorie.label,
+  //   };
+  //   this.categorieService.updateCategorie(categorie.id, updatedCategorie).subscribe(
+  //     () => {
+  //       console.log("cat state updated successfully");
+  //     },
+  //     (error) => {
+  //       console.error('Error updating cat:', error);
+  //     }
+  //   );
+  // }
+
+  updateCategorie(): void {
+    this.categorieService.updateCategorie(this.selectedCategorie.id, { label: this.selectedCategorie.label }).subscribe(
+      () => {
+        console.log("Category updated successfully");
+        this.displayUpdateDialog = false;
+        this.loadCategories(); // Reload categories after update
+      },
+      (error) => {
+        console.error('Error updating category:', error);
+      }
+    );
+  }
+
+
 }
