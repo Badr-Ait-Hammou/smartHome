@@ -16,11 +16,17 @@ import {DividerModule} from "primeng/divider";
 import {CardModule} from "primeng/card";
 import {HttpClientModule} from "@angular/common/http";
 import {DialogModule} from "primeng/dialog";
+import { NavbarComponent } from './navbar/navbar.component';
+import {MenubarModule} from "primeng/menubar";
+import { CategoriesComponent } from './categories/categories.component';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
     AppareilComponent,
-    ListAppareilComponent
+    ListAppareilComponent,
+    NavbarComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ import {DialogModule} from "primeng/dialog";
     DividerModule,
     CardModule,
     HttpClientModule,
-    DialogModule
+    DialogModule,
+    MenubarModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
