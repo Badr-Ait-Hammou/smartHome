@@ -25,7 +25,9 @@
 <!--  </div>-->
 
 <div class="flex-1 p-2 justify-content-between text-center bg-teal-400">
-  <button pButton label="Save Appareil" class="p-button-success mx-0.5 p-1 text-sm" (click)="openSaveDialog()"></button>
+  <button pButton label="switch all on " class="p-button-success mx-0.5 p-1 text-sm gap-2" (click)="switchOnAllAppareils()"></button>
+  <button pButton label="switch all off " class="p-button-danger mx-0.5 p-1 text-sm gap-2" (click)="switchOffAllAppareils()"></button>
+  <button pButton label="Save Appareil" class="p-button-primary mx-0.5 p-1 text-sm gap-2" (click)="openSaveDialog()"></button>
 </div>
 
 <p-dialog header="Save Appareil" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">

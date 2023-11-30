@@ -35,6 +35,14 @@ export class AppareilsService {
     return this.http.put<Appareil>(`${this.apiUrl}/id/${id}`, appareil);
   }
 
+  switchOnAllAppareils(appareil: { id: number; state: boolean }): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/update/updateall`, appareil);
+  }
+
+  switchOffAllAppareils(appareil: { id: number; state: boolean }): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/update/updateall`, appareil);
+  }
+
 
 
 

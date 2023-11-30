@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppareilsService } from '../service/appareils.service';
 import {Appareil} from "../model/Appareil";
+import {data} from "autoprefixer";
 
 @Component({
   selector: 'app-list-appareil',
@@ -38,6 +39,7 @@ export class ListAppareilComponent implements OnInit {
       }
     );
   }
+
 
   /************************ Save Dialog  ***********************/
 
@@ -109,6 +111,40 @@ export class ListAppareilComponent implements OnInit {
     );
   }
 
+
+  switchOnAllAppareils(): void {
+    const updatedAppareil: { id: number; state: boolean } = {
+      id: 0,
+      state: true,
+
+    };
+    this.appareilService.switchOnAllAppareils(updatedAppareil).subscribe(
+      () => {
+        console.log("All appareils updated successfully");
+        this.loadAppareils();
+      },
+      (error) => {
+        console.error('Error updating all appareils:', error);
+      }
+    );
+  }
+
+  switchOffAllAppareils(): void {
+    const updatedAppareil: { id: number; state: boolean } = {
+      id: 0,
+      state: false,
+
+    };
+    this.appareilService.switchOnAllAppareils(updatedAppareil).subscribe(
+      () => {
+        console.log("All appareils updated successfully");
+        this.loadAppareils();
+      },
+      (error) => {
+        console.error('Error updating all appareils:', error);
+      }
+    );
+  }
 
 
 }
