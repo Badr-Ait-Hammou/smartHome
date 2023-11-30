@@ -50,11 +50,11 @@
       <input id="photo" type="file" (change)="onFileChange($event)" />
     </div>
     <div class="p-field">
-      <label for="categorie">Category</label>
-      <select id="categorie" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id">
-        <option *ngFor="let category of categories" [value]="category.id">{{ category.label }}</option>
-      </select>
-      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id" optionLabel="label" [showClear]="true" placeholder="Select a Category"></p-dropdown>
+      <label >Category</label>
+<!--      <select id="categorie" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id">-->
+<!--        <option *ngFor="let category of categories" [value]="category.id">{{ category.label }}</option>-->
+<!--      </select>-->
+      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie" optionLabel="label" [showClear]="true" placeholder="Select a Category"></p-dropdown>
     </div>
   </div>
 
