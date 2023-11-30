@@ -1,41 +1,40 @@
 
 <div class="card  m-3 p-2">
-  <div class="grid grid-cols-2 flex justify-between gap-2 p-1 bg-teal-100 mb-3 -mt-3">
-    <div class="text-end">
+  <div class="grid grid-cols-2 flex justify-content-start gap-2 p-2 bg-gray-100 mb-3 -mt-3">
       <button pButton label="Add Category" class="p-button-primary mx-0.5 p-1 text-sm gap-2" (click)="openSaveDialog()"></button>
-    </div>
-    <div class="text-start">
-
-    </div>
   </div>
-
-
-  <div class="card justify-center mx-5">
-    <p-table [value]="categories" [tableStyle]="{'min-width': '30rem'}">
-      <ng-template pTemplate="header" let-columns>
+  <div class="card">
+    <p-table [value]="categories" >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-start">
+          <h3>Categories</h3>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
         <tr>
-          <th>id </th>
-          <th>label</th>
-          <th>actions</th>
+          <th>id</th>
+          <th>Label</th>
+          <th>Actions</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-product let-columns="columns">
+      <ng-template pTemplate="body" let-category>
         <tr>
-          <td>{{product.id}}</td>
-          <td>{{product.label }}</td>
+          <td>{{category.id}}</td>
+          <td><p-tag [value]="category.label" severity="success" ></p-tag></td>
           <td>
-            <button pButton label="Delete" class="p-button-danger mx-2" (click)="daleteCategorie(product.id)"></button>
-            <button pButton label="Update" class="p-button-primary mx-2" (click)="openUpdateDialog(product)"></button>
+            <button pButton label="Delete" class="p-button-danger mx-2" (click)="daleteCategorie(category.id)"></button>
+            <button pButton label="Update" class="p-button-primary mx-2" (click)="openUpdateDialog(category)"></button>
           </td>
         </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{categories ? categories.length : 0 }} category.
+        </div>
       </ng-template>
     </p-table>
   </div>
 </div>
-<!--<div class=" flex-1 p-2  justify-content-between text-center bg-teal-400  ">-->
-<!--&lt;!&ndash;<button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-success mx-0.5  p-1 text-sm"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;  <button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger mx-0.5 p-1 text-sm"></button>&ndash;&gt;-->
-<!--  </div>-->
 
 
 

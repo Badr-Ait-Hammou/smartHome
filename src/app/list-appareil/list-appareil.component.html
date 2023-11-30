@@ -1,15 +1,15 @@
 
 <div class="card  m-3 p-2">
-  <div class="grid grid-cols-2 flex justify-between gap-2 p-1 bg-teal-100 mb-3 -mt-3">
+  <div class="grid grid-cols-2 flex justify-between gap-2 p-2 bg-gray-100 mb-3 -mt-3">
     <div class="text-end">
       <button pButton label="Save Appareil" class="p-button-primary mx-0.5 p-1 text-sm gap-2" (click)="openSaveDialog()"></button>
     </div>
     <div class="text-start">
       <button pButton label="Switch all on" class="p-button-success mx-0.5 p-1 text-sm gap-2" (click)="switchOnAllAppareils()"></button>
       <button pButton label="Switch all off" class="p-button-danger mx-0.5 p-1 text-sm gap-2" (click)="switchOffAllAppareils()"></button>
-
     </div>
   </div>
+
 
   <div class="grid grid-cols-3 gap-3">
     <div *ngFor="let appareil of appareils" class=" shadow-2 p-3 h-full flex flex-column  border-1 border-round   align-items-center  ">
@@ -29,11 +29,6 @@
     </div>
 </div>
 </div>
-<!--<div class=" flex-1 p-2  justify-content-between text-center bg-teal-400  ">-->
-<!--&lt;!&ndash;<button pButton *ngIf="!areAllDevicesOn()" label="Switch all on" (click)="switchAllOn()" class="p-button-success mx-0.5  p-1 text-sm"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;  <button pButton *ngIf="!areAllDevicesOff()"  label="Switch all off" (click)="switchAllOff()" class="p-button-danger mx-0.5 p-1 text-sm"></button>&ndash;&gt;-->
-<!--  </div>-->
-
 
 
 <p-dialog header="Save Appareil" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">
@@ -59,6 +54,7 @@
       <select id="categorie" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id">
         <option *ngFor="let category of categories" [value]="category.id">{{ category.label }}</option>
       </select>
+      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id" optionLabel="label" [showClear]="true" placeholder="Select a Category"></p-dropdown>
     </div>
   </div>
 

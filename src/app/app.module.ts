@@ -21,6 +21,7 @@ import {MenubarModule} from "primeng/menubar";
 import { CategoriesComponent } from './categories/categories.component';
 import { AppRoutingModule } from './app-routing.module';
 import {TableModule} from "primeng/table";
+import {DropdownModule} from "primeng/dropdown";
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import {TableModule} from "primeng/table";
     DialogModule,
     MenubarModule,
     AppRoutingModule,
-    TableModule
+    TableModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
