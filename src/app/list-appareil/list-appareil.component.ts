@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppareilsService } from '../service/appareils.service';
 import {Appareil} from "../model/Appareil";
-import {data} from "autoprefixer";
 import {Categorie} from "../model/Categorie";
 
 @Component({
@@ -154,7 +153,7 @@ export class ListAppareilComponent implements OnInit {
       state: false,
 
     };
-    this.appareilService.switchOnAllAppareils(updatedAppareil).subscribe(
+    this.appareilService.switchOffAllAppareils(updatedAppareil).subscribe(
       () => {
         console.log("All appareils updated successfully");
         this.loadAppareils();
