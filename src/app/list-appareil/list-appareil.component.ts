@@ -10,7 +10,6 @@ import {Appareil} from "../model/Appareil";
 })
 export class ListAppareilComponent implements OnInit {
   displaySaveDialog = false;
-
   appareils: Appareil[] = [];
   newAppareil: Appareil = {
     id: 0,
@@ -20,16 +19,14 @@ export class ListAppareilComponent implements OnInit {
     photo: '',
   };
 
-
-
-
-
-
   constructor(private appareilService: AppareilsService) {}
 
   ngOnInit(): void {
     this.loadAppareils();
   }
+
+  /************************ load apps ***********************/
+
 
   loadAppareils(): void {
     this.appareilService.findAll().subscribe(
@@ -42,30 +39,78 @@ export class ListAppareilComponent implements OnInit {
     );
   }
 
+  /************************ Save Dialog  ***********************/
+
   openSaveDialog(): void {
     this.displaySaveDialog = true;
   }
+
+
+  /************************ Image upload ***********************/
+
   onFileChange(event: any): void {
     const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('file', file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        this.newAppareil.photo = reader.result;
+      }
+    };
     if (file) {
-      this.newAppareil.photo = URL.createObjectURL(file);
+      reader.readAsDataURL(file);
     }
   }
+
+
+  /************************ Save app ***********************/
+
 
   saveAppareil(): void {
     this.appareilService.saveAppareil(this.newAppareil).subscribe(
       (savedAppareil) => {
-        // Handle success, e.g., close the modal, refresh the list, etc.
+        console.log("saved app",savedAppareil);
         this.displaySaveDialog = false;
-        this.loadAppareils(); // Reload the list after saving
+        this.loadAppareils();
       },
       (error) => {
         console.error('Error saving appareil:', error);
       }
     );
   }
+
+  /************************ Delete app ***********************/
+
+  deleteAppareil(id: number): void {
+    this.appareilService.deleteAppareil(id).subscribe(
+      () => {
+        this.loadAppareils();
+      },
+      (error) => {
+        console.log("id",id);
+        console.error('Error deleting appareil:', error);
+      }
+    );
+  }
+
+  /************************ Update app ***********************/
+
+  updateAppareil(appareil: Appareil): void {
+    const updatedAppareil: { id: number; state: boolean } = {
+      id: appareil.id,
+      state: appareil.state,
+    };
+    this.appareilService.updateAppareil(appareil.id, updatedAppareil).subscribe(
+      () => {
+        console.log("Appareil state updated successfully");
+      },
+      (error) => {
+        console.error('Error updating appareil:', error);
+      }
+    );
+  }
+
+
+
 }
 
 

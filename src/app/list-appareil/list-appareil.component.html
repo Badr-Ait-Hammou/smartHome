@@ -7,11 +7,13 @@
       <div class=" flex flex-wrap justify-between gap-5 text-center">
         <p-tag severity="success"  class="mt-2">name : {{appareil.label}} </p-tag>
         <p-tag severity="success"  class="mt-2">status : {{appareil.state}} </p-tag>
+        <p-inputSwitch [(ngModel)]="appareil.state" (onChange)="updateAppareil(appareil)"></p-inputSwitch>
+
         <!--      <p-inputSwitch [(ngModel)]="appareilStatus" class="mt-2" ></p-inputSwitch>-->
       </div>
       <div class="flex align-items-center gap-2 mt-1">
         <p-tag severity="success"  class="mt-2">desc : {{appareil.description}} </p-tag>
-        <button pButton  label="Switch "  class="p-button-danger mx-0.5 p-1 text-sm"></button>
+        <button pButton label="Delete Appareil" class="p-button-danger mx-0.5 p-1 text-sm" (click)="deleteAppareil(appareil.id) "></button>
 
       </div>
     </div>
@@ -33,7 +35,11 @@
       <input id="label" pInputText [(ngModel)]="newAppareil.label" />
     </div>
     <div class="p-field">
-      <label for="stats">State</label>
+      <label for="label">description</label>
+      <input id="description" pInputText [(ngModel)]="newAppareil.description" />
+    </div>
+    <div class="p-field">
+      <label >State</label>
       <p-inputSwitch [(ngModel)]="newAppareil.state"></p-inputSwitch>
     </div>
     <div class="p-field">
