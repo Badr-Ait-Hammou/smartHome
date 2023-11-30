@@ -1,4 +1,3 @@
-import {Categorie} from "./Categorie";
 
 export class Appareil{
   id!:number;
@@ -6,6 +5,7 @@ export class Appareil{
   description!:string;
   state!:boolean
   photo!:string;
-  //categorie!:Categorie;
+  categorie?: { id: number };
+
 }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppareilsService } from '../service/appareils.service';
 import {Appareil} from "../model/Appareil";
 import {data} from "autoprefixer";
+import {Categorie} from "../model/Categorie";
 
 @Component({
   selector: 'app-list-appareil',
@@ -12,18 +13,25 @@ import {data} from "autoprefixer";
 export class ListAppareilComponent implements OnInit {
   displaySaveDialog = false;
   appareils: Appareil[] = [];
+  categories: Categorie[] = [];
+
   newAppareil: Appareil = {
     id: 0,
     label: '',
     state:false,
     description: '',
     photo: '',
+    categorie: {
+      id: 0
+    },
   };
 
   constructor(private appareilService: AppareilsService) {}
 
   ngOnInit(): void {
     this.loadAppareils();
+    this.loadCategories();
+
   }
 
   /************************ load apps ***********************/
@@ -36,6 +44,17 @@ export class ListAppareilComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching appareils:', error);
+      }
+    );
+  }
+
+  loadCategories(): void {
+    this.appareilService.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
       }
     );
   }

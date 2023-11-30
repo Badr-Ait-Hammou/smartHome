@@ -3,7 +3,6 @@
   <div class="grid grid-cols-3 gap-3">
     <div *ngFor="let appareil of appareils" class=" shadow-2 p-3 h-full flex flex-column  border-1 border-round   align-items-center  ">
          <img [src]="appareil.photo" alt="{{ appareil.label }}" class=" object-cover h-48 w-96"/>
-
       <div class=" flex flex-wrap justify-between gap-5 text-center">
         <p-tag severity="success"  class="mt-2">name : {{appareil.label}} </p-tag>
         <p-tag severity="success"  class="mt-2">status : {{appareil.state}} </p-tag>
@@ -47,7 +46,14 @@
     <div class="p-field">
       <label for="photo">Photo</label>
       <input id="photo" type="file" (change)="onFileChange($event)" />
-    </div>  </div>
+    </div>
+    <div class="p-field">
+      <label for="categorie">Category</label>
+      <select id="categorie" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.label }}</option>
+      </select>
+    </div>
+  </div>
 
   <div class="p-dialog-footer">
     <button pButton label="Save" class="p-button-success" (click)="saveAppareil()"></button>
