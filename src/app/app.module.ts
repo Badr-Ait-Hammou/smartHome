@@ -22,6 +22,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { AppRoutingModule } from './app-routing.module';
 import {TableModule} from "primeng/table";
 import {DropdownModule} from "primeng/dropdown";
+import {ToastModule} from "primeng/toast";
+import {FileUploadModule} from "primeng/fileupload";
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,9 @@ import {DropdownModule} from "primeng/dropdown";
     MenubarModule,
     AppRoutingModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

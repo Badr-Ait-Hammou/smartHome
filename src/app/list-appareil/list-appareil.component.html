@@ -19,7 +19,6 @@
         <p-tag severity="success"  class="mt-2">status : {{appareil.state}} </p-tag>
         <p-inputSwitch [(ngModel)]="appareil.state" (onChange)="updateAppareil(appareil)"></p-inputSwitch>
 
-        <!--      <p-inputSwitch [(ngModel)]="appareilStatus" class="mt-2" ></p-inputSwitch>-->
       </div>
       <div class="flex align-items-center gap-2 mt-1">
         <p-tag severity="success"  class="mt-2">desc : {{appareil.description}} </p-tag>
@@ -31,30 +30,39 @@
 </div>
 
 
-<p-dialog header="Save Appareil" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">
+<p-dialog header="Add Device" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">
   <div class="p-fluid">
-    <div class="p-field">
+    <div class="p-field m-1">
       <label for="label">Label</label>
       <input id="label" pInputText [(ngModel)]="newAppareil.label" />
     </div>
-    <div class="p-field">
+    <div class="p-field m-1">
       <label for="label">description</label>
       <input id="description" pInputText [(ngModel)]="newAppareil.description" />
     </div>
-    <div class="p-field">
+    <div class="p-field m-1">
+      <label >Category</label>
+      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie" optionLabel="label" [showClear]="false" placeholder="Select a Category"></p-dropdown>
+    </div>
+<!--    <div class="p-field m-1">-->
+<!--      <label for="photo">Photo</label>-->
+<!--      <input id="photo" type="file" (change)="onFileChange($event)" />-->
+<!--    </div>-->
+
+    <div class="p-field m-1">
+      <label >Photo</label>
+      <p-fileUpload
+        name="photo"
+        url="your_upload_url"
+        accept="image/*"
+        (onSelect)="onFileSelect($event)"
+      ></p-fileUpload>
+    </div>
+
+
+    <div class="p-field m-1 flex justify-between">
       <label >State</label>
       <p-inputSwitch [(ngModel)]="newAppareil.state"></p-inputSwitch>
-    </div>
-    <div class="p-field">
-      <label for="photo">Photo</label>
-      <input id="photo" type="file" (change)="onFileChange($event)" />
-    </div>
-    <div class="p-field">
-      <label >Category</label>
-<!--      <select id="categorie" [(ngModel)]="newAppareil.categorie && newAppareil.categorie.id">-->
-<!--        <option *ngFor="let category of categories" [value]="category.id">{{ category.label }}</option>-->
-<!--      </select>-->
-      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie" optionLabel="label" [showClear]="true" placeholder="Select a Category"></p-dropdown>
     </div>
   </div>
 

@@ -68,18 +68,35 @@ export class ListAppareilComponent implements OnInit {
 
   /************************ Image upload ***********************/
 
-  onFileChange(event: any): void {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      if (typeof reader.result === 'string') {
-        this.newAppareil.photo = reader.result;
-      }
-    };
+  // onFileChange(event: any): void {
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     if (typeof reader.result === 'string') {
+  //       this.newAppareil.photo = reader.result;
+  //     }
+  //   };
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
+  // Replace the existing onFileChange method with onFileSelect
+  onFileSelect(event: any): void {
+    const file = event.files && event.files[0];
     if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result === 'string') {
+          this.newAppareil.photo = reader.result;
+        }
+      };
       reader.readAsDataURL(file);
     }
   }
+
+// Remove the existing onFileChange method
+
 
 
   /************************ Save app ***********************/
@@ -167,32 +184,3 @@ export class ListAppareilComponent implements OnInit {
 
 }
 
-
-// constructor(private appareilsService: AppareilsService) {
-//   setTimeout(()=>{
-//     this.isOk=false;
-//   },5000);
-// }
-//
-// get appareils() {
-//   return this.appareilsService.appareils;
-// }
-//
-// areAllDevicesOn(): boolean {
-//   return this.appareilsService.areAllDevicesOn();
-// }
-//
-// areAllDevicesOff(): boolean {
-//   return this.appareilsService.areAllDevicesOff();
-// }
-//
-// switchAllOn(): void {
-//   this.appareilsService.switchAllOn();
-// }
-//
-// switchAllOff(): void {
-//   this.appareilsService.switchAllOff();
-// }
-//
-//
-//
