@@ -1,6 +1,7 @@
 # SmartHome
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+![screencapture-localhost-4200-Devices-2023-12-02-22_46_32](https://github.com/Badr-Ait-Hammou/smartHome/assets/121731124/66cdf9e9-b25e-4bd4-8aec-f03cdab5720c)
+
 
 ## Development server
 
