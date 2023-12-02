@@ -21,12 +21,12 @@ export class NavbarComponent implements OnInit {
     this.items = [
       {
         label: 'Devices',
-        icon: 'pi pi-fw pi-file',
+        icon: 'pi pi-fw pi-slack',
         command: () => this.navigateTo('/Devices'),
       },
       {
         label: 'Categories',
-        icon: 'pi pi-fw pi-trash',
+        icon: 'pi pi-fw pi-ticket',
         command: () => this.navigateTo('/category'),
 
       },
