@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppareilComponent } from './appareil/appareil.component';
 import { ListAppareilComponent } from './list-appareil/list-appareil.component';
 import {FormsModule} from "@angular/forms";
 import { ButtonModule } from 'primeng/button';
@@ -27,7 +26,6 @@ import {FileUploadModule} from "primeng/fileupload";
 @NgModule({
   declarations: [
     AppComponent,
-    AppareilComponent,
     ListAppareilComponent,
     NavbarComponent,
     CategoriesComponent
