@@ -21,7 +21,8 @@ export class ListAppareilComponent implements OnInit {
     description: '',
     photo: '',
     categorie: {
-      id: 0
+      id: 0,
+      label:'',
     },
   };
 
@@ -31,6 +32,11 @@ export class ListAppareilComponent implements OnInit {
     this.loadAppareils();
     this.loadCategories();
 
+  }
+
+  onCategoryChange(): void {
+    const categoryId = this.newAppareil.categorie && this.newAppareil.categorie.id;
+    console.log('Selected category ID changed:', categoryId);
   }
 
   /************************ load apps ***********************/

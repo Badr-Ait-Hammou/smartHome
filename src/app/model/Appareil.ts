@@ -5,7 +5,7 @@ export class Appareil{
   description!:string;
   state!:boolean
   photo!:string;
-  categorie?: { id: number };
+  categorie?: { id: number , label:string, };
 
 }
 

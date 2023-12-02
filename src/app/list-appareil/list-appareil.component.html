@@ -10,25 +10,32 @@
     </div>
   </div>
 
-
   <div class="grid grid-cols-3 gap-3">
-    <div *ngFor="let appareil of appareils" class=" shadow-2 p-3 h-full flex flex-column  border-1 border-round   align-items-center  ">
-         <img [src]="appareil.photo" alt="{{ appareil.label }}" class=" object-cover h-48 w-96"/>
-      <div class=" flex flex-wrap justify-between gap-5 text-center">
-        <p-tag severity="success"  class="mt-2">name : {{appareil.label}} </p-tag>
-        <p-tag severity="success"  class="mt-2">status : {{appareil.state}} </p-tag>
-        <p-inputSwitch [(ngModel)]="appareil.state" (onChange)="updateAppareil(appareil)"></p-inputSwitch>
-
+    <div *ngFor="let appareil of appareils" class="  align-items-center bg-white shadow-md rounded-3xl p-2 cursor-pointer ">
+      <div class="overflow-x-hidden rounded-2xl relative">
+        <img class="h-40 rounded-2xl w-full object-cover" [src]="appareil.photo" alt="{{ appareil.label }}">
+        <p-tag [severity]="appareil.state?'success':'danger'" class="absolute right-2 top-2   p-2 cursor-pointer group">
+          {{appareil.state? 'on':'off'}}
+        </p-tag>
+        <p-tag severity="warning" class="absolute right-10 top-2 p-2 ">
+          <span class="pi pi-ticket text-sm ">
+            {{appareil.categorie && appareil.categorie.label}}
+          </span>
+        </p-tag>
       </div>
-      <div class="flex align-items-center gap-2 mt-1">
-        <p-tag severity="success"  class="mt-2">desc : {{appareil.description}} </p-tag>
-        <button pButton label="Delete Appareil" class="p-button-danger mx-0.5 p-1 text-sm" (click)="deleteAppareil(appareil.id) "></button>
-
+      <div class="mt-4 pl-2 mb-2 flex justify-between ">
+        <div>
+          <p class="text-lg font-semibold text-gray-900 mb-0">{{appareil.label}}</p>
+          <p class="text-md text-gray-800 mt-0"> {{appareil.description}}</p>
+        </div>
+        <div class="flex  justify-between  ">
+          <p-inputSwitch class="mt-2.5" [(ngModel)]="appareil.state" (onChange)="updateAppareil(appareil)"></p-inputSwitch>
+          <button pButton icon="pi pi-trash " class="p-button-text text-red-600 bg-transparent  " (click)="deleteAppareil(appareil.id) "></button>
+        </div>
       </div>
     </div>
 </div>
 </div>
-
 
 <p-dialog header="Add Device" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true">
   <div class="p-fluid">
@@ -41,28 +48,23 @@
       <input id="description" pInputText [(ngModel)]="newAppareil.description" />
     </div>
     <div class="p-field m-1">
-      <label >Category</label>
-      <p-dropdown [options]="categories" [(ngModel)]="newAppareil.categorie" optionLabel="label" [showClear]="false" placeholder="Select a Category"></p-dropdown>
-    </div>
-<!--    <div class="p-field m-1">-->
-<!--      <label for="photo">Photo</label>-->
-<!--      <input id="photo" type="file" (change)="onFileChange($event)" />-->
-<!--    </div>-->
-
-    <div class="p-field m-1">
       <label >Photo</label>
-      <p-fileUpload
-        name="photo"
-        url="your_upload_url"
-        accept="image/*"
-        (onSelect)="onFileSelect($event)"
-      ></p-fileUpload>
+      <p-fileUpload name="photo" url="your_upload_url" accept="image/*" (onSelect)="onFileSelect($event)"></p-fileUpload>
     </div>
-
 
     <div class="p-field m-1 flex justify-between">
-      <label >State</label>
-      <p-inputSwitch [(ngModel)]="newAppareil.state"></p-inputSwitch>
+      <div class="p-field m-1">
+        <div class="p-field m-1">
+          <label for="category" class="mx-2">Category</label>
+          <select class="form-select " id="category" [(ngModel)]="newAppareil.categorie!.id" name="category">
+            <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.label }}</option>
+          </select>
+        </div>
+      </div>
+    <div class="flex justify-between mt-1 mx-2">
+      <label class="mx-3 " >State</label>
+      <p-inputSwitch [(ngModel)]="newAppareil.state" ></p-inputSwitch>
+    </div>
     </div>
   </div>
 
