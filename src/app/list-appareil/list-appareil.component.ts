@@ -96,7 +96,7 @@ export class ListAppareilComponent implements OnInit {
       (savedAppareil) => {
         console.log("saved app",savedAppareil);
         this.displaySaveDialog = false;
-        this.showSuccessToast("done")
+        this.showUpdateToast("new Device added successfully ","success","Done")
         this.loadAppareils();
       },
       (error) => {
@@ -106,9 +106,12 @@ export class ListAppareilComponent implements OnInit {
   }
 
 
-  private showSuccessToast(message: string): void {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
+
+
+  private showUpdateToast(message: string ,severity:string,summary:string): void {
+    this.messageService.add({ severity: severity, summary: summary, detail: message });
   }
+
   /************************ Delete app ***********************/
 
   deleteAppareil(id: number): void {
@@ -133,7 +136,9 @@ export class ListAppareilComponent implements OnInit {
     this.appareilService.updateAppareil(appareil.id, updatedAppareil).subscribe(
       () => {
         console.log("Appareil state updated successfully");
-        this.showSuccessToast("well")
+        this.showUpdateToast("Device state updated ","info","Updated")
+
+
 
       },
       (error) => {
@@ -152,6 +157,8 @@ export class ListAppareilComponent implements OnInit {
     this.appareilService.switchOnAllAppareils(updatedAppareil).subscribe(
       () => {
         console.log("All appareils updated successfully");
+        this.showUpdateToast("All Device Switched On ","success","Updated")
+
         this.loadAppareils();
       },
       (error) => {
@@ -169,6 +176,7 @@ export class ListAppareilComponent implements OnInit {
     this.appareilService.switchOffAllAppareils(updatedAppareil).subscribe(
       () => {
         console.log("All appareils updated successfully");
+        this.showUpdateToast("All Device Switched Off ","error","Updated")
         this.loadAppareils();
       },
       (error) => {
