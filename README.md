@@ -1,6 +1,6 @@
 # SmartHome
 
-![screencapture-localhost-4200-Devices-2023-12-02-22_46_32](https://github.com/Badr-Ait-Hammou/smartHome/assets/121731124/66cdf9e9-b25e-4bd4-8aec-f03cdab5720c)
+![Opera Snapshot_2023-12-04_001000_localhost](https://github.com/Badr-Ait-Hammou/smartHome/assets/121731124/60d8a522-144a-41d1-8cbb-88347e419f4b)
 
 
 ## Development server
