@@ -23,6 +23,7 @@ import {TableModule} from "primeng/table";
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {FileUploadModule} from "primeng/fileupload";
+import {MessageService} from "primeng/api";
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,7 @@ import {FileUploadModule} from "primeng/fileupload";
     ToastModule,
     FileUploadModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

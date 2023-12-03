@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppareilsService } from '../service/appareils.service';
 import {Appareil} from "../model/Appareil";
 import {Categorie} from "../model/Categorie";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-list-appareil',
@@ -26,17 +27,12 @@ export class ListAppareilComponent implements OnInit {
     },
   };
 
-  constructor(private appareilService: AppareilsService) {}
+  constructor(private appareilService: AppareilsService,private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.loadAppareils();
     this.loadCategories();
 
-  }
-
-  onCategoryChange(): void {
-    const categoryId = this.newAppareil.categorie && this.newAppareil.categorie.id;
-    console.log('Selected category ID changed:', categoryId);
   }
 
   /************************ load apps ***********************/
@@ -74,20 +70,8 @@ export class ListAppareilComponent implements OnInit {
 
   /************************ Image upload ***********************/
 
-  // onFileChange(event: any): void {
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.onloadend = () => {
-  //     if (typeof reader.result === 'string') {
-  //       this.newAppareil.photo = reader.result;
-  //     }
-  //   };
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 
-  // Replace the existing onFileChange method with onFileSelect
+
   onFileSelect(event: any): void {
     const file = event.files && event.files[0];
     if (file) {
@@ -101,7 +85,6 @@ export class ListAppareilComponent implements OnInit {
     }
   }
 
-// Remove the existing onFileChange method
 
 
 
@@ -113,6 +96,7 @@ export class ListAppareilComponent implements OnInit {
       (savedAppareil) => {
         console.log("saved app",savedAppareil);
         this.displaySaveDialog = false;
+        this.showSuccessToast("done")
         this.loadAppareils();
       },
       (error) => {
@@ -121,6 +105,10 @@ export class ListAppareilComponent implements OnInit {
     );
   }
 
+
+  private showSuccessToast(message: string): void {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
+  }
   /************************ Delete app ***********************/
 
   deleteAppareil(id: number): void {
@@ -145,6 +133,8 @@ export class ListAppareilComponent implements OnInit {
     this.appareilService.updateAppareil(appareil.id, updatedAppareil).subscribe(
       () => {
         console.log("Appareil state updated successfully");
+        this.showSuccessToast("well")
+
       },
       (error) => {
         console.error('Error updating appareil:', error);
